@@ -1,0 +1,173 @@
+---
+title: "Global Economics"
+author: "Sam Musch - musch.sam@gmail.com"
+subtitle: ''
+output:
+  html_document:
+    toc: yes
+    toc_depth: '4'
+    df_print: paged
+  pdf_document:
+    toc: yes
+    toc_depth: 4
+    number_sections: yes
+urlcolor: blue
+---
+
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=5, fig.height=3, fig.align='left', warning=F, message=F)
+kable_func <- function(data) {
+  knitr::kable(data, booktabs=T, digits=2) %>%
+    kable_styling(latex_options = c('striped', 'scale_down'))
+}
+theme_ilo <- function() {
+  theme_minimal() +
+    theme(
+      text = element_text(family = "Bookman", color = "gray25"),
+      plot.subtitle = element_text(size = 10),
+      plot.caption = element_text(color = "gray30"),
+      plot.background = element_rect(fill = "gray95"),
+      plot.margin = unit(c(5, 10, 5, 10), units = "mm")
+    )
+}
+mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+```
+
+
+```{r}
+library(tidyverse)
+library(DT)
+```
+
+
+
+# Energy
+
+```{r}
+# https://github.com/ropensci/eia
+# remotes::install_github("ropensci/eia")
+library(eia)
+eia_set_key("215bf919f392786f2ebb754dd29d895b")
+
+# International: 2134384
+ # Petrol: 2134434
+  # Consumption: 2134436
+  # Stocks: 2134439
+
+#eia_cats(2134439)
+
+```
+
+
+## Plants
+
+```{r}
+# https://github.com/wri/global-power-plant-database
+library(RCurl)
+x <- getURL("https://raw.githubusercontent.com/wri/global-power-plant-database/master/output_database/global_power_plant_database.csv")
+data <- read.csv(text = x)
+
+```
+
+
+
+# Trade
+
+```{r}
+library(tradestatistics)
+# datatable(ots_tables)
+
+import_size_2020 <- ots_create_tidy_data(
+  years = 2020,
+  reporters = c("usa"),
+  #partners = "arg",
+  table = "yrp"
+) %>% 
+  mutate(totals = sum(trade_value_usd_imp),
+         pct_total = formatC(100 * trade_value_usd_imp / totals), digits=2) %>%
+  select(partner_iso, trade_value_usd_imp, pct_total) %>%
+  arrange(desc(trade_value_usd_imp)) 
+
+
+
+#data_first <- ots_create_tidy_data(
+#  years = 1962:2020,
+#  reporters = c("usa"),
+#  table = "yrp")
+
+
+```
+
+
+```{r, eval=FALSE}
+data <- data_first %>% 
+  select(year, partner_iso, trade_value_usd_imp) %>%
+  dplyr::mutate(trade_value_usd_imp = replace_na(trade_value_usd_imp, 0)) %>%
+  drop_na() %>%
+  group_by(year) %>%
+  arrange(desc(trade_value_usd_imp)) %>%
+  mutate(rank=row_number()) %>%
+  filter(rank<=10) %>% 
+  mutate(year = lubridate::ymd(year, truncated = 2L)) %>%
+  as_tibble()
+```
+
+
+# Dataverse
+
+```{r}
+# https://guides.dataverse.org/en/latest/user/account.html
+  # remotes::install_github("iqss/dataverse-client-r")
+  # https://dataverse.harvard.edu/
+library(dataverse)
+
+Sys.setenv("DATAVERSE_KEY" = "493de3c4-dfed-458a-a4f5-334c27c406f3")
+Sys.setenv("DATAVERSE_SERVER" = "dataverse.harvard.edu")
+
+# nlsw <-
+#  get_dataframe_by_doi(
+#    filedoi     = "10.70122/FK2/PPIAXE/MHDB0O",
+#    server      = "demo.dataverse.org")
+
+```
+
+
+# US Census
+
+```{r}
+library(tidycensus)  # https://walker-data.com/tidycensus/articles/basic-usage.html
+library(censusapi)   # main one to use
+  # https://github.com/hrecht/censusapi
+  # https://www.hrecht.com/censusapi/articles/getting-started.html
+
+#census_api_key("1037078fc76765e282541656ed1b89d7cab500c5", install = TRUE)
+#Sys.setenv(CENSUS_KEY="1037078fc76765e282541656ed1b89d7cab500c5")
+
+
+#apis <- listCensusApis()
+#View(apis)
+```
+
+
+# FRED
+
+```{r}
+library(fredr)
+library(urbnmapr) # https://urbaninstitute.github.io/urbnmapr/articles/introducing-urbnmapr.html
+fredr_set_key("07bccc6cd5cd1018027266ce854705db")
+
+housing <- fredr_series_search_text(
+  search_text = "duluth housing cbsa",
+  order_by = 'title',
+  limit = 1000L) %>% filter(frequency_short == 'M', units != 'Percent')
+```
+
+
+
+
+
