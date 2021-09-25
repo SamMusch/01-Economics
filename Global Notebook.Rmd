@@ -3,14 +3,14 @@ title: "Global Economics"
 author: "Sam Musch - musch.sam@gmail.com"
 subtitle: ''
 output:
-  html_document:
-    toc: yes
-    toc_depth: '4'
-    df_print: paged
   pdf_document:
     toc: yes
     toc_depth: 4
     number_sections: yes
+  #rmdformats::robobook:
+    #toc: yes
+    #toc_depth: '4'
+    #df_print: paged
 urlcolor: blue
 ---
 
@@ -36,51 +36,68 @@ mode <- function(x) {
   ux <- unique(x)
   ux[which.max(tabulate(match(x, ux)))]
 }
+
 ```
 
 
 ```{r}
 library(tidyverse)
 library(DT)
-```
-
-
-
-# Energy
-
-```{r}
-# https://github.com/ropensci/eia
-# remotes::install_github("ropensci/eia")
-library(eia)
-eia_set_key("215bf919f392786f2ebb754dd29d895b")
-
-# International: 2134384
- # Petrol: 2134434
-  # Consumption: 2134436
-  # Stocks: 2134439
-
-#eia_cats(2134439)
-
-```
-
-
-## Plants
-
-```{r}
-# https://github.com/wri/global-power-plant-database
 library(RCurl)
-x <- getURL("https://raw.githubusercontent.com/wri/global-power-plant-database/master/output_database/global_power_plant_database.csv")
-data <- read.csv(text = x)
+library(lubridate)
+library(Quandl)
 
+start <- '2021-04-01'
+end <- '2021-08-01'
 ```
 
 
 
-# Trade
+International Trade
+
+- Trade
+
+
+US Core
+
+- GDP: Bureau of Economic Analysis
+- Inflation: Bureau of Labor Statistics
+- Unemployment: Bureau of Labor Statistics
+- Monetary: Federal Open Market Committee (FRED, Fed Reserve Economic Data), 8 meetings per year
+
+
+Short term
+
+- Consumer Confidence: Conference Board
+- Index of Leading Indicators: Conference Board
+- Business Cycles: National Bureau of Economic Research
+
+
+Science
+
+- Resources
+- Energy
+- NASA
+
+
+Others
+
+- US Census
+- Energy
+- Google Earth
+
+
+
+# International
+
+## Trade
 
 ```{r}
 library(tradestatistics)
 # datatable(ots_tables)
+# part of "ropensci"
+# https://tradestatistics.io/
+# https://docs.ropensci.org/tradestatistics/reference/index.html
 
 import_size_2020 <- ots_create_tidy_data(
   years = 2020,
@@ -94,17 +111,65 @@ import_size_2020 <- ots_create_tidy_data(
   arrange(desc(trade_value_usd_imp)) 
 
 
+ots_countries
 
-#data_first <- ots_create_tidy_data(
-#  years = 1962:2020,
-#  reporters = c("usa"),
-#  table = "yrp")
+```
+
+
+
+
+
+```{r}
+
+# Sept 10: 5 major trade partners of the US
+
+us_only <- ots_create_tidy_data(
+  years = 2000:2020,
+  reporters = c("usa"),
+  table = "yr") %>%
+  select(-reporter_fullname_english) %>%
+  rename(us_total_exp = trade_value_usd_exp,
+         us_total_imp = trade_value_usd_imp)
+
+can_chn_mex <- ots_create_tidy_data(
+  years = 2000:2020,
+  reporters = c("usa"),
+  partners = c("can", "chn", "mex","gbr", "jpn"),
+  table = "yrp") %>%
+  select(-reporter_fullname_english, -partner_iso) 
+
+
+agg_df <- us_only %>% 
+  inner_join(can_chn_mex,
+            by = c('year', 'reporter_iso')) %>%
+  mutate(exp_pct = trade_value_usd_exp / us_total_exp,
+         imp_pct = trade_value_usd_imp / us_total_imp) %>%
+  select(year, partner_fullname_english, exp_pct, imp_pct) %>% 
+  pivot_longer(cols = c('exp_pct', 'imp_pct'),
+               names_to = 'var_name') %>% 
+  mutate(rep_year = lubridate::ymd(year, truncated = 2L))
+
+
+ggplot(agg_df, aes(x = rep_year, y = value, color = partner_fullname_english)) +
+  geom_line() +
+  facet_grid(cols = vars(var_name)) +
+  theme_bw()
+
 
 
 ```
 
 
+
+
+---
+
 ```{r, eval=FALSE}
+data_first <- ots_create_tidy_data(
+  years = c(2015, 2020),
+  reporters = c("usa"),
+  table = "yrp")
+
 data <- data_first %>% 
   select(year, partner_iso, trade_value_usd_imp) %>%
   dplyr::mutate(trade_value_usd_imp = replace_na(trade_value_usd_imp, 0)) %>%
@@ -112,13 +177,195 @@ data <- data_first %>%
   group_by(year) %>%
   arrange(desc(trade_value_usd_imp)) %>%
   mutate(rank=row_number()) %>%
-  filter(rank<=10) %>% 
+  filter(rank<=25) %>% 
   mutate(year = lubridate::ymd(year, truncated = 2L)) %>%
   as_tibble()
+
+data %>% 
+  arrange(partner_iso, year) %>%
+  group_by(partner_iso) %>%
+  mutate(pct_change = (trade_value_usd_imp / lag(trade_value_usd_imp) - 1) * 100) %>%
+  arrange(desc(pct_change))
+  #ungroup() %>%
+  #filter(year == '2020-01-01')
+
+
 ```
 
 
-# Dataverse
+
+---
+
+# US Core
+
+```{r}
+# https://urbaninstitute.github.io/urbnmapr/articles/introducing-urbnmapr.html
+library(urbnmapr) # US
+states %>% select(long, lat, state_abbv) %>% head()
+
+```
+
+---
+
+## GDP
+
+- [Github Repo](https://github.com/us-bea/bea.R)
+- [NIPA Tables](https://apps.bea.gov/iTable/iTable.cfm?reqid=19&step=2#reqid=19&step=2&isuri=1&1921=survey)
+
+
+```{r gdp}
+#library(devtools)
+#install_github('mikeasilva/blsAPI')
+
+library(bea.R)
+library(tidyverse)
+#tables <- beaSearch('gross domestic', beaKey)
+# tables %>% mutate(ReleaseDate = mdy_hm(ReleaseDate))
+beaKey <- Sys.getenv("beaKey")
+
+year_list = c("2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021")
+gdp_real <- list(
+  "UserID" = beaKey,
+  "Method" = "GetData",
+  "datasetname" = "NIPA",
+  "TableName" = "T10103", 
+  'Frequency' = 'Q',
+  "LineCode" = 1,
+  "GeoFips" = "National",
+  "Year" = year_list)
+gdp_real <- beaGet(gdp_real, asWide = FALSE) %>%
+  select(LineDescription, TimePeriod, DataValue)
+
+
+gdp_real_growth <- list(
+  "UserID" = beaKey,
+  "Method" = "GetData",
+  "datasetname" = "NIPA",
+  "TableName" = "T10101", 
+  'Frequency' = 'Q',
+  "LineCode" = 1,
+  "GeoFips" = "National",
+  "Year" = year_list)
+gdp_real_growth <- beaGet(gdp_real_growth, asWide = FALSE) %>%
+  select(LineDescription, TimePeriod, DataValue)
+
+
+```
+
+---
+
+## Inflation
+
+
+https://github.com/mikeasilva/blsAPI
+
+https://www.bls.gov/developers/api_r.htm
+
+
+```{r}
+library(rjson)
+library(blsAPI)
+response <- blsAPI('CUSR0000SA0') # All items in U.S. city average, all urban consumers, seasonally adjusted
+                                  # https://download.bls.gov/pub/time.series/cu/cu.series
+
+# https://download.bls.gov/pub/time.series/ap/
+
+# Functions comes from github link
+json <- fromJSON(response)
+apiDF <- function(data){
+  df <- data.frame(year=character(),
+                   period=character(),
+                   periodName=character(),
+                   value=character(),
+                   stringsAsFactors=FALSE)
+  i <- 0
+  for(d in data){
+    i <- i + 1
+    df[i,] <- unlist(d)
+  }
+  return(df)}
+
+
+cpi <- apiDF(json$Results$series[[1]]$data)
+cpi %>% head()
+```
+
+---
+
+## Employment
+
+Clothing - https://www.bls.gov/iag/tgs/iag448.htm
+
+```{r employment}
+library(blsAPI)
+#https://www.bls.gov/data/
+
+
+
+```
+
+---
+
+## Monetary
+
+
+```{r}
+library(fredr)
+Sys.getenv("FRED_API_KEY")
+
+
+#m1 <- Quandl('FRED/M1SL', start_date=start, end_date=end)
+
+
+```
+
+```{r}
+housing <- fredr_series_search_text(
+  search_text = "duluth housing cbsa",
+  order_by = 'title',
+  limit = 1000L) %>% filter(frequency_short == 'M', units != 'Percent')
+```
+
+
+---
+
+# Short-Term
+
+## Consumer Confidence
+
+```{r}
+
+cons_conf <- Quandl('OECD/KEI_CSCICP02_USA_ST_M', start_date=start, end_date=end)
+
+```
+
+
+
+
+# Others
+
+---
+
+## US Census
+
+```{r}
+library(tidycensus)  # https://walker-data.com/tidycensus/articles/basic-usage.html
+library(censusapi)   # main one to use
+  # https://github.com/hrecht/censusapi
+  # https://www.hrecht.com/censusapi/articles/getting-started.html
+
+#census_api_key("1037078fc76765e282541656ed1b89d7cab500c5", install = TRUE)
+Sys.getenv("CENSUS_KEY")
+
+
+#apis <- listCensusApis()
+#View(apis)
+```
+
+---
+
+## Dataverse
+
 
 ```{r}
 # https://guides.dataverse.org/en/latest/user/account.html
@@ -126,7 +373,7 @@ data <- data_first %>%
   # https://dataverse.harvard.edu/
 library(dataverse)
 
-Sys.setenv("DATAVERSE_KEY" = "493de3c4-dfed-458a-a4f5-334c27c406f3")
+Sys.getenv("DATAVERSE_KEY")
 Sys.setenv("DATAVERSE_SERVER" = "dataverse.harvard.edu")
 
 # nlsw <-
@@ -137,37 +384,22 @@ Sys.setenv("DATAVERSE_SERVER" = "dataverse.harvard.edu")
 ```
 
 
-# US Census
+## Quandl
+
+https://www.quandl.com/data/FRED-Federal-Reserve-Economic-Data/documentation
+
 
 ```{r}
-library(tidycensus)  # https://walker-data.com/tidycensus/articles/basic-usage.html
-library(censusapi)   # main one to use
-  # https://github.com/hrecht/censusapi
-  # https://www.hrecht.com/censusapi/articles/getting-started.html
 
-#census_api_key("1037078fc76765e282541656ed1b89d7cab500c5", install = TRUE)
-#Sys.setenv(CENSUS_KEY="1037078fc76765e282541656ed1b89d7cab500c5")
+real_gdp <- Quandl('FRED/A191RL1Q225SBEA', start_date=start, end_date=end)
+cpi <- Quandl('FRED/CPIAUCSL', start_date=start, end_date=end)
+unemployment <- Quandl('FRED/UNRATE', start_date=start, end_date=end)
+participation <- Quandl('FRED/CIVPART', start_date=start, end_date=end)
+real_disposable <- Quandl('FRED/DSPIC96', start_date=start, end_date=end)
+nom_disposable <- Quandl('FRED/DSPI', start_date=start, end_date=end)
+fed_funds_rate <- Quandl('FRED/DFF', start_date=start, end_date=end)
 
 
-#apis <- listCensusApis()
-#View(apis)
+
 ```
-
-
-# FRED
-
-```{r}
-library(fredr)
-library(urbnmapr) # https://urbaninstitute.github.io/urbnmapr/articles/introducing-urbnmapr.html
-fredr_set_key("07bccc6cd5cd1018027266ce854705db")
-
-housing <- fredr_series_search_text(
-  search_text = "duluth housing cbsa",
-  order_by = 'title',
-  limit = 1000L) %>% filter(frequency_short == 'M', units != 'Percent')
-```
-
-
-
-
 
