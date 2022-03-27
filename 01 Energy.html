@@ -1,0 +1,804 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+
+@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
+:root {
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
+
+#write {
+	max-width: 40em;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
+
+/* ====== */
+
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2,
+h3 {
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+h5,
+h6 {
+	font-size: 1em;
+	/*16*/
+}
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+p,
+blockquote,
+.md-fences {
+	margin-bottom: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
+
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
+}
+/* lists */
+
+ul,
+ol {
+	margin: 0 0 1.5em 1.5em;
+}
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
+}
+
+code,
+.md-fences {
+	background-color: #dadada;
+}
+
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.md-fences {
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>01 Energy</title>
+</head>
+<body class='typora-export typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#agriculture">Agriculture</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#demand">Demand </a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#economic-growth-rates">Economic growth rates </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#biofuel-mandates">Biofuel mandates</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#increased-trading-in-futures-markets">Increased trading in futures markets </a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#supply">Supply </a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#costs-of-production">Costs of Production </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#size-of-area-being-harvested--yield-growth">Size of area being harvested &amp; yield growth </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#stocks-to-use-ratio">Stocks-to-use ratio </a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#sources">Sources</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#crude-oil">Crude oil</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#harvard-energy">Harvard Energy</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#overview">Overview</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#costs">Costs</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#ideas">Ideas</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><p>&nbsp;</p><p><a href='https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/pdfs/energy-economics/statistical-review/bp-stats-review-2020-full-report.pdf'><span>2020 BP Stats Review World Energy</span></a></p><p><a href='https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/pdfs/energy-economics/statistical-review/bp-stats-review-2021-full-report.pdf'><span>2021 BP Stats Review World Energy</span></a></p><h1 id='agriculture'><span>Agriculture</span></h1><h2 id='demand'><span>Demand </span></h2><h3 id='economic-growth-rates'><span>Economic growth rates </span></h3><p><span>&quot;The economic expansion in many countries produces an upward movement of the urban population into the middle class that can afford to consume high-valued livestock and convenient processed products.&quot; </span></p><p><span>Price hikes </span></p><ul><li><span>changing consumption habits and diet diversification </span></li><li><span>expanding middle class </span></li><li><span>increasing urbanization </span></li></ul><p><span>Global </span></p><ul><li><span>China: Prices fall as China rebalances from an export-oriented economy to a domestic-demand economy </span></li><li><span>India: Fastest growing economy (higher demand), but hasn&#39;t impacted prices much because they&#39;ve become a major exporter </span></li></ul><p>&nbsp;</p><h3 id='biofuel-mandates'><span>Biofuel mandates</span></h3><p><a href='https://www.afpm.org/issues/fuels-vehicles/RFS'><span>AMPF</span></a></p><p><span>Why? Fears of energy dependence, analysts were expecting </span></p><ul><li><span>Increased fuel consumption </span></li><li><span>Decreasing domestic crude production </span></li></ul><p><span>Actual result </span></p><ul><li><span>Gas demand flattened due to improves tech </span></li><li><span>Fracking enabled crude oil production to skyrocket </span></li></ul><p>&nbsp;</p><h3 id='increased-trading-in-futures-markets'><span>Increased trading in futures markets </span></h3><p><span>&quot;A typical feature of these commodity contracts is that only 2 percent of them end in the delivery of the physical commodity. The Food and Agriculture Organization of the United Nations asserted that excessive speculation amplified soaring agricultural commodity prices in 2007/08, with the claim being that speculation creates excessive demand and disconnects prices from supply-use balance.&quot;</span></p><hr /><p>&nbsp;</p><h2 id='supply'><span>Supply </span></h2><h3 id='costs-of-production'><span>Costs of Production </span></h3><ul><li><span>Fertilizer natural gas is main source of hydrogen used to produce ammonia which is the base for all nitrogenous fertilizers</span></li><li><span>Electricity </span></li><li><span>Fuel </span></li><li><span>Other petroleum-based products </span></li><li><span>&quot;The main components of the fertilizer price index and the energy price index are the price of natural gas and the price of crude oil, respectively&quot;</span></li></ul><h3 id='size-of-area-being-harvested--yield-growth'><span>Size of area being harvested &amp; yield growth </span></h3><ul><li><span>Producers increase planted acreage in anticipation of greater crop returns. </span></li><li><span>Yield growth due to technical and farm practice changes</span></li></ul><h3 id='stocks-to-use-ratio'><span>Stocks-to-use ratio </span></h3><ul><li><span>Ratio = supply of commodities / demand</span></li></ul><hr /><h2 id='sources'><span>Sources</span></h2><p><span>The U.S. Energy Information Administration (EIA) develops the AEO by using the National Energy Modeling System (NEMS), an integrated model that captures interactions of economic changes and energy supply, demand, and prices.</span></p><p><a href='https://www.eia.gov/totalenergy/data/browser/?tbl=T07.02A#/?f=M'><span>Electricity by primary source</span></a></p><p><a href='https://www.eia.gov/energyexplained/us-energy-facts/'><span>US Energy Mix</span></a></p><ul><li><p><a href='https://www.eia.gov/energyexplained/oil-and-petroleum-products/'><span>Petroleum</span></a><span> (35%)</span></p><p><em><span>Petroleum products</span></em><span> are fuels made from crude oil and hydrocarbons contained in natural gas. Petroleum products can also be made from coal, natural gas, and biomass.</span></p><p><span>Crude oil removed from ground</span></p><p><span>--&gt; sent to refinery</span></p><p><span>--&gt; separated into </span><a href='https://www.eia.gov/energyexplained/oil-and-petroleum-products/images/products_from_barrel_crude_oil.png'><span>image</span></a></p></li><li><p><span>Natural gas (34%)</span></p></li><li><p><span>Renewable (12%)</span></p></li><li><p><span>Coal (10%)</span></p></li><li><p><a href='eia.gov/energyexplained/nuclear/'><span>Nuclear</span></a><span> (9%)</span></p><p><a href='https://www.youtube.com/watch?v=pVbLlnmxIbY'><span>3 reasons why its good</span></a></p><ol start='' ><li><span>Able to store it &quot;somewhere&quot; instead of pumping into the air</span></li><li><span>Reduces CO2 emissions</span></li><li><span>Tech getting better, might be able to solve waste problem</span></li></ol></li></ul><hr /><h3 id='crude-oil'><span>Crude oil</span></h3><ul><li><a href='https://www.thebalance.com/crude-oil-prices-trends-and-impact-on-the-economy-and-you-3305738'><span>What is crude oil?</span></a></li><li><a href='https://www.thebalance.com/crude-oil-brent-versus-wti-808872#:~:text=WTI%20is%20the%20benchmark%20crude%20for%20North%20America.&amp;text=Brent%20crude%20oil%20futures%20trade,use%20them%20in%20different%20manners'><span>Crude oil market</span></a></li></ul><p><span>Crude oil: Not yet refined for use. Used for:</span></p><ul><li><span>Transportation</span></li><li><span>Heating and electricity generation</span></li><li><span>Petroleum products</span></li><li><span>Plastics</span></li></ul><p><span>Each barrel of crude oil = 19.4 gallons of gasoline</span></p><p><span>Crude oil prices: spot price of various barrels of oil. Common:</span></p><ul><li><p><span>West Texas Intermediate (US)</span></p><ul><li><span>Little bit cheaper than Brent because of shale oil</span></li></ul></li><li><p><span>Brent Blend </span></p><ul><li><span>Benchmark for Africa, Europe, Middle East</span></li><li><span>Produced in the Brent oil fields and other sites in the North Sea</span></li></ul></li><li><p><span>Dubai Mercantile Exchange</span></p></li></ul><p><span>WTI/Brent Factors:</span></p><ul><li><span>U.S. production levels</span></li><li><span>Supply-and-demand balance in the U.S.</span></li><li><span>North Sea production</span></li><li><span>Geopolitical issues internationally</span></li></ul><p><span>Arab Spring in Egypt 2011 --&gt; Brent price went up. Fears of Suez Canal closure.</span></p><p><span>In late 2011, the Iranian government threatened to close the Straits of Hormuz, through which approximately 20% of the world&#39;s oil flows.</span></p><p><span>In 2019, domestic production met 60% of the U.S. demand of 20.46 million barrels per day.</span></p><p><span>March 2020: OPEC+ meeting ends in disagreement, Russia backing out </span><a href='https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/pdfs/energy-economics/statistical-review/bp-stats-review-2021-full-report.pdf'><span>Source</span></a></p><hr /><p><span>Watching price:</span></p><ul><li><span>Production</span></li><li><span>Potential production</span></li><li><span>Demand</span></li><li><span>Price</span></li><li><span>OPEC Market Share</span></li></ul><p>&nbsp;</p><hr /><p><a href='https://www.eia.gov/energyexplained/gasoline/'><span>Gasoline EIA</span></a><span>, </span><a href='https://www.eia.gov/energyexplained/oil-and-petroleum-products/refining-crude-oil.php'><span>EIA Refining Crude Oil</span></a></p><p><span>News</span></p><ul><li><a href='https://www.eia.gov/petroleum/refinerycapacity/'><span>Refinery capacity reports</span></a></li><li><a href='https://www.eia.gov/petroleum/supply/monthly/'><span>Petroleum supply monthly</span></a></li></ul><p><img src="https://i.imgur.com/AAcTaKs.png" referrerpolicy="no-referrer" alt="Image: Inputs &amp; Outputs"></p><p><span>Steps</span></p><ol start='' ><li><p><span>Crude oil</span></p></li><li><p><span>Petroleum refineries produce </span><strong><span>blends</span></strong></p><ol start='' ><li><a href='https://www.eia.gov/tools/glossary/index.php?id=Motor%20gasoline%20blending%20components'><span>Blend components</span></a><span>: Naphthas is used for blending into finished gasoline.</span></li></ol></li><li><p><span>Blending terminals produce </span><strong><span>finished</span></strong></p><ol start='' ><li><span>Most in US contain 10% ethanol </span></li></ol></li></ol><p><span>Crude oils are classified by </span><strong><span>density</span></strong><span> &amp; </span><strong><span>sulfur content</span></strong><span>. Less dense = lighter crude oils = higher API gravity.</span></p><ul><li><span>Light uses simple distillation to produce gasoline, diesel fuel, and jet fuel</span></li><li><span>Heavy crude oils require additional, more expensive processing to produce high-value products</span></li></ul><p><span>Octane rating = average between motor octane rating (MOR) and research octane rating (RON)</span></p><ul><li><span>Regular ~ 87</span></li><li><span>Midgrade ~ 90</span></li><li><span>Premium ~ 92</span></li></ul><p>&nbsp;</p><p><span>Input:</span></p><figure><table><thead><tr><th><strong><span>Product</span></strong></th><th><strong><span>Gallons per 42 of Crude</span></strong></th><th><strong><span>%</span></strong></th></tr></thead><tbody><tr><td><strong><span>crude oil</span></strong></td><td><span>5.202</span></td><td><span>86%</span></td></tr><tr><td><strong><span>other liquids</span></strong></td><td><span>0.180</span></td><td><span>3%</span></td></tr><tr><td><strong><span>fuel ethanol</span></strong></td><td><span>0.294</span></td><td><span>5%</span></td></tr><tr><td><strong><span>HGLs</span></strong></td><td><span>0.186</span></td><td><span>3%</span></td></tr><tr><td><strong><span>blending components</span></strong></td><td><span>0.202</span></td><td><span>3%</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><span>Output:</span></p><figure><table><thead><tr><th><strong><span>Product</span></strong></th><th><strong><span>Gallons</span></strong></th><th><strong><span>%</span></strong></th></tr></thead><tbody><tr><td><span>Finished motor gasoline</span></td><td><span>19.40</span></td><td><span>43%</span></td></tr><tr><td><span>Distillate fuel oil</span></td><td><span>13.44</span></td><td><span>30%</span></td></tr><tr><td><span>Kerosene-type jet fuel</span></td><td><span>2.90</span></td><td><span>6%</span></td></tr><tr><td><span>Petroleum coke</span></td><td><span>2.18</span></td><td><span>5%</span></td></tr><tr><td><span>Still gas</span></td><td><span>1.76</span></td><td><span>4%</span></td></tr><tr><td><span>Hydrocarbon gas liquids</span></td><td><span>1.55</span></td><td><span>3%</span></td></tr><tr><td><span>Asphalt and road oil</span></td><td><span>0.92</span></td><td><span>2%</span></td></tr><tr><td><span>Residual fuel oil</span></td><td><span>0.55</span></td><td><span>1%</span></td></tr><tr><td><span>Naptha for feedstocks</span></td><td><span>0.50</span></td><td><span>1%</span></td></tr><tr><td><span>Lubricants</span></td><td><span>0.42</span></td><td><span>1%</span></td></tr><tr><td><span>Other oils for feedstocks</span></td><td><span>0.29</span></td><td><span>1%</span></td></tr><tr><td><span>Miscellaneous products</span></td><td><span>0.25</span></td><td><span>1%</span></td></tr><tr><td><span>Special napthas</span></td><td><span>0.08</span></td><td><span>0%</span></td></tr><tr><td><span>Finished aviation gasoline</span></td><td><span>0.04</span></td><td><span>0%</span></td></tr><tr><td><span>Kerosene</span></td><td><span>0.04</span></td><td><span>0%</span></td></tr></tbody></table></figure><p>&nbsp;</p><p>&nbsp;</p><h1 id='harvard-energy'><span>Harvard Energy</span></h1><p><span>Links</span></p><ul><li><p><a href='https://courses.edx.org/courses/course-v1:HarvardX+ENGSCI137x+2T2021/ce82a52b6aba4b4ebd60992f2468b5b9/'><span>Harvard Course</span></a></p></li><li><p><a href='https://courses.edx.org/assets/courseware/v1/da1b2babc44992297d73934984ff00ba/asset-v1:HarvardX+ENGSCI137x+2T2021+type@asset+block/Conversion_Sheet_082018.pdf'><span>Energy Conversion Sheet</span></a></p></li><li><p><a href='https://i.imgur.com/rh8q7ch.png'><span>Image: Sankey Diagram or US Energy Use</span></a></p></li><li><p><a href='https://courses.edx.org/courses/course-v1:HarvardX+ENGSCI137x+2T2018/ce82a52b6aba4b4ebd60992f2468b5b9/'><span>Pricing Resources</span></a></p><ul><li><a href='https://ec.europa.eu/eurostat/web/energy/data'><span>Europe</span></a></li></ul></li><li><p><span>Papers</span></p><ul><li><a href='http://www.vaclavsmil.com/wp-content/uploads/docs/smil-article-2004world-history-energy.pdf'><span>Paper: World History and Energy</span></a></li><li><a href='https://www.iea.org/topics/world-energy-outlook'><span>Internation World Energy Outlook</span></a></li></ul></li></ul><h2 id='overview'><span>Overview</span></h2><p><span>Time</span></p><ul><li><span>1760: Steam engine (Industrial revolution)</span></li><li><span>1973: Oil price shock</span></li></ul><p><span>Consumption = Production + Imports - Exports</span></p><p><span>Standards:</span></p><ul><li><strong><span>Price:</span></strong><span> Dollars per Gigajoule</span></li><li><strong><span>Cost:</span></strong><span> Dollars per Kilowat of capacity</span></li></ul><p><span>Since 1850:</span></p><ul><li><span>5x: Population</span></li><li><span>4x: Per capita energy use</span></li></ul><p><span>Why?</span></p><ul><li><span>Access to fossil fuels = more people can survive</span></li><li><span>Social change * population growth = innovation</span></li></ul><p>&nbsp;</p><p><span>Carbon-free electricy generating sources: </span></p><ul><li><span>Hydro</span></li><li><span>Nuclear</span></li><li><span>Wind</span></li><li><span>Solar</span></li><li><a href='https://i.imgur.com/7zxCIsc.png'><span>Image: Growth rates</span></a></li><li><a href='https://i.imgur.com/dr8Y43a.png'><span>Image: Market Share</span></a></li></ul><p>&nbsp;</p><p><span>US 2004-2014 Avg Cost (per GJ): </span><a href='https://learning.edx.org/course/course-v1:HarvardX+ENGSCI137x+2T2021/block-v1:HarvardX+ENGSCI137x+2T2021+type@sequential+block@0fd919870e0b4ebea749f56c96b619d3/block-v1:HarvardX+ENGSCI137x+2T2021+type@vertical+block@28cc621966684f39862142669bb7f96f'><span>2nd Video</span></a></p><ul><li><p><span>$20: Electricity</span></p><ul><li><span>High price because expensive to turn coal into electricity</span></li><li><span>Electricity not used for heating because its so expensive compared to gas</span></li><li><span>Oil used to be used, but its more expensive than gas &amp; nuclear</span></li></ul></li><li><p><span>$14: Oil</span></p></li><li><p><span>$6: Gas</span></p></li><li><p><span>$2: Coal</span></p></li></ul><p>&nbsp;</p><p><span>Oil vs Gas:</span></p><ul><li><span>Transportation: Oil is a much better transportation fuel than natural gas. Its cheaper &amp; more efficient</span></li><li><span>When producing oil, you also get some natural gas. </span></li><li><span>Oil can be sent internationally easily. Gas cannot.</span></li><li><em><span>Natural gas prices move as a result of the oil market</span></em></li></ul><p>&nbsp;</p><h2 id='costs'><span>Costs</span></h2><p><span>Costs</span></p><ul><li><p><strong><span>Levelized Cost</span></strong><span>: Fixed cost + variable costs</span></p><p><a href='https://www.nrel.gov/analysis/tech-lcoe.html'><span>Calculator</span></a></p></li><li><p><strong><span>Cost of mitigation</span></strong><span>: Includes business &amp; environmental costs</span></p></li></ul><p><span>Solar &amp; wind: high fixed up front, low variable</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='ideas'><span>Ideas</span></h2><p><span>Primary sources --&gt; Residential, Commercial, Industrial, Transportation</span></p><ul><li><span>If you see how the &quot;outputs&quot; are changing, you&#39;ll be able to track the inputs</span></li><li><span>Where are these inputs located globally? This is where the war is fought</span></li><li><span>How much does it cost?</span></li><li><span>Europe needs to heat: does it need to come from natural gas? Which countries / companies supplies Europe with natural gas?</span></li></ul><p>&nbsp;</p></div></div>
+
+<script>(function (){var t=document.body.parentElement,e=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(t,e,n){document.addEventListener(t,function(t){if(!t.defaultPrevented)for(var i=t.target;i&&i!=this;i=i.parentNode)if(i.matches(e)){!1===n.call(i,t)&&(t.preventDefault(),t.stopPropagation());break}},!1)};function o(){return t.scrollTop}r("click",".outline-expander",function(t){var e=this.closest(".outline-item-wrapper").classList;return e.contains("outline-item-open")?e.remove("outline-item-open"):e.add("outline-item-open"),c(),!1}),r("click",".outline-item",function(t){var e=this.querySelector(".outline-label");if(location.hash="#"+e.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),l(),n.add("outline-item-active")}});var a,s,u=function(){var t=o();n=null;for(var i=0;i<e.length&&e[i][1]-t<60;i++)n=e[i]},l=function(){document.querySelectorAll(".outline-item-active").forEach(t=>t.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(t=>t.classList.remove("outline-item-open"))},c=function(){if(n){l();var t=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(t)if(i){var e=t.closest(".outline-item-open>ul>.outline-item-wrapper");if(e)e.classList.add("outline-item-active");else{for(var r=(t=t.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(t=r).parentElement.closest(".outline-item-wrapper");t.classList.add("outline-item-active")}}else t.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(t){a&&clearTimeout(a),a=setTimeout(function(){u(),c()},300)});var f=function(){s=setTimeout(function(){!function(){e=[];var t=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");e.push([i,t+n.getBoundingClientRect().y])})}(),u(),c()},300)};window.addEventListener("resize",function(t){s&&clearTimeout(s),f()}),f()})();</script></body>
+</html>
