@@ -1,15 +1,16 @@
 from git import Repo
 import pandas as pd
 
+
+PATH_OF_GIT_REPO = r'/Users/Sam/01-Economics'  # make sure .git folder is properly configured
+COMMIT_MESSAGE = 'comment from python script'
+
 df = pd.DataFrame({
     'a': [1,2],
     'b': [3,4]
 })
 
-df.to_csv('testing.csv')
-
-PATH_OF_GIT_REPO = r'/Users/Sam/01-Economics'  # make sure .git folder is properly configured
-COMMIT_MESSAGE = 'comment from python script'
+df.to_csv('/Users/Sam/01-Economics/CSV Files/testing.csv')
 
 def git_push(PATH_OF_GIT_REPO, COMMIT_MESSAGE):
     try:
