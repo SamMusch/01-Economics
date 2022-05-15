@@ -44,3 +44,4 @@ git_push(PATH_OF_GIT_REPO, COMMIT_MESSAGE)
 #    unemployment = nasdaqdatalink.get("FRED/UNRATE").reset_index().tail(40).rename(columns={'Value':'Unemployment'})
 #    real_disposable = nasdaqdatalink.get("FRED/DSPIC96").reset_index().tail(40).rename(columns={'Value':'Real_Dispose'})
 #    df = cpi.merge(unemployment, how='outer', on='Date').merge(real_disposable, how='outer', on='Date')
+

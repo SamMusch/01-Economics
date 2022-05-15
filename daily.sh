@@ -1,1 +1,1 @@
-5 0 * * 6 python3 /Users/Sam/01-Economics/Testing.py
+0 * * * * python3 /Users/Sam/01-Economics/Testing.py
