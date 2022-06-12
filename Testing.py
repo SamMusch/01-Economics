@@ -11,7 +11,7 @@ COMMIT_MESSAGE = 'comment from python script'
 
 def git_push(PATH_OF_GIT_REPO, COMMIT_MESSAGE):
     df = pd.DataFrame()
-    link = ['CPIAUCSL', 'UNRATE', 'DSPIC96']
+    link = ['CPIAUCSL', 'UNRATE', 'DSPIC96', 'AWHAEMAN', 'ICSA', 'ACDGNO', 'NEWORDER', 'PERMIT', 'UMCSENT'] # ISM/MAN_NEWORDERS
     for i in link:
         data = pd.DataFrame(fred.get_series(i)).reset_index().tail(60)
         data['Name'] = i
