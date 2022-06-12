@@ -6,7 +6,6 @@ import pandas as pd
 from fredapi import Fred
 
 
-
 fred = Fred(api_key='07bccc6cd5cd1018027266ce854705db')
 
 PATH_OF_GIT_REPO = r'/Users/Sam/01-Economics'  # make sure .git folder is properly configured
