@@ -21,7 +21,7 @@ def git_push(PATH_OF_GIT_REPO, COMMIT_MESSAGE):
     data['Updated'] = pd.Timestamp.now()
 
     data.to_csv('/Users/Sam/01-Economics/CSV Files/Macro_Vars.csv')    
-    print(df)
+    print(data)
     
     try:
         repo = Repo(PATH_OF_GIT_REPO)
@@ -37,7 +37,6 @@ git_push(PATH_OF_GIT_REPO, COMMIT_MESSAGE)
 
 #def job():
 #schedule.every().minute.do(job)
-
 
 
 #    cpi = nasdaqdatalink.get("FRED/CPIAUCSL").reset_index().tail(40).rename(columns={'Value':'CPI'})
