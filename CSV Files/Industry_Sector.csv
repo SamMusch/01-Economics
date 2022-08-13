@@ -1,0 +1,206 @@
+SECTORNUMBER,Industry,Sector
+1,"Agriculture, forestry, fishing and hunting",Crop production
+2,"Agriculture, forestry, fishing and hunting",Animal production and aquaculture
+3,"Agriculture, forestry, fishing and hunting",Forestry
+4,"Agriculture, forestry, fishing and hunting",Logging
+5,"Agriculture, forestry, fishing and hunting","Fishing, hunting and trapping"
+6,"Agriculture, forestry, fishing and hunting",Support activities for agriculture and forestry
+5,Mining,Oil and gas extraction
+6,Mining,Coal mining
+7,Mining,Metal ore mining
+8,Mining,Nonmetallic mineral mining and quarrying
+9,Mining,Support activities for mining
+8,Utilities ,"Electric power generation, transmission and distribution"
+9,Utilities ,Natural gas distribution
+10,Utilities ,"Water, sewage and other systems"
+9,Construction,Construction
+10,Manufacturing,Animal food manufacturing
+11,Manufacturing,Grain and oilseed milling
+12,Manufacturing,Sugar and confectionery product manufacturing
+13,Manufacturing,Fruit and vegetable preserving and specialty food manufacturing
+14,Manufacturing,Dairy product manufacturing
+15,Manufacturing,Animal slaughtering and processing
+16,Manufacturing,Seafood product preparation and packaging
+17,Manufacturing,Bakeries and tortilla manufacturing
+18,Manufacturing,Other food manufacturing
+19,Manufacturing,Beverage manufacturing
+20,Manufacturing,Tobacco manufacturing
+21,Manufacturing,Textile mills and textile product mills
+22,Manufacturing,"Apparel, leather and allied product manufacturing"
+23,Manufacturing,Sawmills and wood preservation
+24,Manufacturing,"Veneer, plywood, and engineered wood product manufacturing"
+25,Manufacturing,Other wood product manufacturing
+26,Manufacturing,"Pulp, paper, and paperboard mills"
+27,Manufacturing,Converted paper product manufacturing
+28,Manufacturing,Printing and related support activities
+29,Manufacturing,Petroleum and coal products manufacturing
+30,Manufacturing,Basic chemical manufacturing
+31,Manufacturing,"Resin, synthetic rubber, and artificial synthetic fibers and filaments manufacturing"
+32,Manufacturing,"Pesticide, fertilizer, and other agricultural chemical manufacturing"
+33,Manufacturing,Pharmaceutical and medicine manufacturing
+34,Manufacturing,"Paint, coating, and adhesive manufacturing"
+35,Manufacturing,"Soap, cleaning compound, and toilet preparation manufacturing"
+36,Manufacturing,Other chemical product and preparation manufacturing
+37,Manufacturing,Plastics product manufacturing
+38,Manufacturing,Rubber product manufacturing
+39,Manufacturing,Clay product and refractory manufacturing
+40,Manufacturing,Glass and glass product manufacturing
+41,Manufacturing,Cement and concrete product manufacturing
+42,Manufacturing,"Lime, gypsum and other nonmetallic mineral product manufacturing"
+43,Manufacturing,Iron and steel mills and ferroalloy manufacturing
+44,Manufacturing,Steel product manufacturing from purchased steel
+45,Manufacturing,Alumina and aluminum production and processing
+46,Manufacturing,Nonferrous metal (except aluminum) production and processing
+47,Manufacturing,Foundries
+48,Manufacturing,Forging and stamping
+49,Manufacturing,Cutlery and handtool manufacturing
+50,Manufacturing,Architectural and structural metals manufacturing
+51,Manufacturing,"Boiler, tank, and shipping container manufacturing"
+52,Manufacturing,Hardware manufacturing
+53,Manufacturing,Spring and wire product manufacturing
+54,Manufacturing,"Machine shops; turned product; and screw, nut, and bolt manufacturing"
+55,Manufacturing,"Coating, engraving, heat treating, and allied activities"
+56,Manufacturing,Other fabricated metal product manufacturing
+57,Manufacturing,"Agriculture, construction, and mining machinery manufacturing"
+58,Manufacturing,Industrial machinery manufacturing
+59,Manufacturing,"Commercial and service industry machinery manufacturing, including digital camera manufacturing"
+60,Manufacturing,"Ventilation, heating, air-conditioning, and commercial refrigeration equipment manufacturing"
+61,Manufacturing,Metalworking machinery manufacturing
+62,Manufacturing,"Engine, turbine, and power transmission equipment manufacturing"
+63,Manufacturing,Other general purpose machinery manufacturing
+64,Manufacturing,"Computer and peripheral equipment manufacturing, excluding digital camera manufacturing"
+65,Manufacturing,Communications equipment manufacturing
+66,Manufacturing,Audio and video equipment manufacturing
+67,Manufacturing,Semiconductor and other electronic component manufacturing
+68,Manufacturing,"Navigational, measuring, electromedical, and control instruments manufacturing"
+69,Manufacturing,Manufacturing and reproducing magnetic and optical media
+70,Manufacturing,Electric lighting equipment manufacturing
+71,Manufacturing,Household appliance manufacturing
+72,Manufacturing,Electrical equipment manufacturing
+73,Manufacturing,Other electrical equipment and component manufacturing
+74,Manufacturing,Motor vehicle manufacturing
+75,Manufacturing,Motor vehicle body and trailer manufacturing
+76,Manufacturing,Motor vehicle parts manufacturing
+77,Manufacturing,Aerospace product and parts manufacturing
+78,Manufacturing,Railroad rolling stock manufacturing
+79,Manufacturing,Ship and boat building
+80,Manufacturing,Other transportation equipment manufacturing
+81,Manufacturing,Household and institutional furniture and kitchen cabinet manufacturing
+82,Manufacturing,Office furniture (including fixtures) manufacturing
+83,Manufacturing,Other furniture related product manufacturing
+84,Manufacturing,Medical equipment and supplies manufacturing
+85,Manufacturing,Other miscellaneous manufacturing
+84,Wholesale trade,Wholesale trade
+85,Retail trade,Motor vehicle and parts dealers
+86,Retail trade,Food and beverage stores
+87,Retail trade,General Merchandise stores
+88,Retail trade,"Retail , except motor vehicle and parts dealers, food and beverage stores, and general merchandise stores"
+86,Transportation and warehousing,Air transportation
+87,Transportation and warehousing,Rail transportation
+88,Transportation and warehousing,Water transportation
+89,Transportation and warehousing,Truck transportation
+90,Transportation and warehousing,Transit and ground passenger transportation
+91,Transportation and warehousing,Pipeline transportation
+92,Transportation and warehousing,Scenic and sightseeing transportation and support activities for transportation
+93,Transportation and warehousing,Couriers and messengers
+94,Transportation and warehousing,Warehousing and storage
+93,Information,"Newspaper, periodical, book, and directory publishers"
+94,Information,Software publishers
+95,Information,"Motion picture, video, and sound recording industries"
+96,Information,Radio and television broadcasting
+97,Information,Cable and other subscription programming
+98,Information,Wired telecommunications carriers
+99,Information,Wireless telecommunications carriers (except satellite)
+100,Information,"Satellite, telecommunications resellers, and all other telecommunications"
+101,Information,"Data processing, hosting, and related services"
+102,Information,Other information services
+101,Finance and insurance,"Monetary authorities, credit intermediation, and related activities"
+102,Finance and insurance,"Securities, commodity contracts, fund, trusts and other financial investments and vehicles and related activities"
+103,Finance and insurance,Insurance carriers
+104,Finance and insurance,"Agencies, brokerages, and other insurance related activities"
+103,Real estate and rental and leasing,Real estate
+104,Real estate and rental and leasing,Automotive equipment rental and leasing
+105,Real estate and rental and leasing,Consumer goods rental and general rental centers
+106,Real estate and rental and leasing,Commercial and industrial machinery and equipment rental and leasing
+107,Real estate and rental and leasing,Lessors of nonfinancial intangible assets (except copyrighted works)
+106,"Professional, scientific, and technical services",Legal services
+107,"Professional, scientific, and technical services","Accounting, tax preparation, bookkeeping, and payroll services"
+108,"Professional, scientific, and technical services","Architectural, engineering, and related services"
+109,"Professional, scientific, and technical services",Specialized design services
+110,"Professional, scientific, and technical services",Computer systems design and related services
+111,"Professional, scientific, and technical services","Management, scientific, and technical consulting services"
+112,"Professional, scientific, and technical services",Scientific research and development services
+113,"Professional, scientific, and technical services","Advertising, public relations, and related services"
+114,"Professional, scientific, and technical services","Other professional, scientific, and technical services"
+113,Management of companies and enterprises,Management of companies and enterprises
+114,Administrative and support and waste management and remediation services,Office administrative services
+115,Administrative and support and waste management and remediation services,Facilities support services
+116,Administrative and support and waste management and remediation services,Employment services
+117,Administrative and support and waste management and remediation services,Business support services
+118,Administrative and support and waste management and remediation services,Travel arrangement and reservation services
+119,Administrative and support and waste management and remediation services,Investigation and security services
+120,Administrative and support and waste management and remediation services,Services to buildings and dwellings
+121,Administrative and support and waste management and remediation services,Other support services
+122,Administrative and support and waste management and remediation services,Waste management and remediation services
+121,Educational services,Elementary and secondary schools; private
+122,Educational services,"Junior colleges, colleges, universities, and professional schools; private"
+123,Educational services,Other educational services; private
+122,Health care and social assistance,Offices of physicians
+123,Health care and social assistance,Offices of dentists
+124,Health care and social assistance,Offices of other health practitioners
+125,Health care and social assistance,Outpatient care centers
+126,Health care and social assistance,Medical and diagnostic laboratories
+127,Health care and social assistance,Home health care services
+128,Health care and social assistance,Other ambulatory health care services
+129,Health care and social assistance,Hospitals; private
+130,Health care and social assistance,Nursing and residential care facilities
+131,Health care and social assistance,Individual and family services
+132,Health care and social assistance,Community and vocational rehabilitation services
+133,Health care and social assistance,Child day care services
+132,"Arts, entertainment, and recreation",Performing arts companies
+133,"Arts, entertainment, and recreation",Spectator sports
+134,"Arts, entertainment, and recreation","Promoters of  events, and agents and managers"
+135,"Arts, entertainment, and recreation","Independent artists, writers, and performers"
+136,"Arts, entertainment, and recreation","Museums, historical sites, and similar institutions"
+137,"Arts, entertainment, and recreation",Amusement parks and arcades
+138,"Arts, entertainment, and recreation",Gambling industries (except casino hotels)
+139,"Arts, entertainment, and recreation",Other amusement and recreation industries
+138,Accommodation and food services,Accommodation
+139,Accommodation and food services,Food services and drinking places
+140,Other services  (except public administration),Automotive repair and maintenance
+141,Other services  (except public administration),Electronic and precision equipment repair and maintenance
+142,Other services  (except public administration),Commercial and industrial machinery and equipment (except automotive and electronic) repair and maintenance
+143,Other services  (except public administration),Personal and household goods repair and maintenance
+144,Other services  (except public administration),Personal care services
+145,Other services  (except public administration),Death care services
+146,Other services  (except public administration),Drycleaning and laundry services
+147,Other services  (except public administration),Other personal services
+148,Other services  (except public administration),Religious organizations
+149,Other services  (except public administration),Grantmaking and giving services and social advocacy organizations
+150,Other services  (except public administration),"Civic, social, professional, and similar organizations"
+151,Other services  (except public administration),Private households
+150,Government,Postal Service
+151,Government,Federal electric utilities
+152,Government,Federal enterprises except the Postal Service and electric utilities
+153,Government,Federal defense government compensation
+154,Government,Federal defense government consumption of fixed capital
+155,Government,Federal defense government except compensation and consumption of fixed capital
+156,Government,Federal non-defense government compensation
+157,Government,Federal non-defense government consumption of fixed capital
+158,Government,Federal non-defense government except compensation and consumption of fixed capital
+159,Government,Local government passenger transit
+160,Government,Local government enterprises except passenger transit
+161,Government,Local government hospitals compensation
+162,Government,Local government educational services compensation
+163,Government,"Local government, other compensation"
+164,Government,State government enterprises
+165,Government,State government hospitals compensation
+166,Government,State government educational services compensation
+167,Government,"State government, other compensation"
+168,Government,State and Local government consumption of fixed capital 
+169,Government,State and Local government except compensation and consumption of fixed capital
+168,Special industries,Owner-occupied dwellings
+169,Special industries,Noncomparable imports
+170,Special industries,Scrap
+171,Special industries,Used and secondhand goods
+172,Special industries,Rest of the world adjustment
